@@ -20,17 +20,25 @@ const ProductDetail = () => {
     return (
       <>
         {productsDetail && (
-          <div className="container p-14">
-            <div>
+          <div className="flex p-14 h-[600px] overflow-hidden">
+            <div className="p-10">
+              <img src={productsDetail.image} alt="pic" />
+            </div>
+            <div className="flex flex-col ">
+              <div className="text-2xl font-bold">{productsDetail.title}</div>
               <div>
-                <img src={productsDetail.image} alt="pic" />
-              </div>
-              <div>{productsDetail.title}</div>
-              <div>
-                <p>{productsDetail.description}</p>
+                <p className="text-sm text-gray-600">
+                  {productsDetail.description}
+                </p>
               </div>
 
-              <div>Price ${productsDetail.price}</div>
+              <div className="font-bold">Price: ${productsDetail.price}</div>
+              <button
+                type="button"
+                className="bg-gray-700 text-white p-2 mt-2 rounded-md"
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         )}
