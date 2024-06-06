@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../store/features/productSlice";
+import React from "react";
 import Products from "../components/Products";
 
 const Home = () => {
