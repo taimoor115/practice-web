@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../store/features/productSlice";
+import { add } from "../store/features/cartSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,10 @@ const Products = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const handleAdd = (product) => {
+    dispatch(add(product));
+  };
 
   if (status === "loading" || products === undefined) {
     return <div>Loading....</div>;
@@ -56,15 +61,12 @@ const Products = () => {
                     </p>
                   </div>
                   <div className="flex justify-around">
-                    <button className="bg-gray-700 text-white p-2 mt-2 rounded-md">
-                      Add to Cart
-                    </button>
-                    <Link
-                      to={`products/${product.id}`}
+                    <button
+                      onClick={() => handleAdd(product)}
                       className="bg-gray-700 text-white p-2 mt-2 rounded-md"
                     >
-                      Check
-                    </Link>
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               ))}

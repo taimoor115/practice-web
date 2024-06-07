@@ -1,10 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { items } = useSelector((state) => state.cart);
+
+  const totalQuantity = items.reduce((acc, cur) => acc + cur.quantity, 0);
+
   return (
     <div className="flex px-2 py-4 justify-between w-full bg-slate-500">
-      <span className="font-bold text-xl lg:text-2xl">Webify Shopping</span>
+      <Link to={"/"} className="font-bold text-xl lg:text-2xl">
+        Webify Shopping
+      </Link>
       <div className="w-32  font-bold text-xl hidden lg:block space-x-4">
         <Link to={"/"}>Home</Link>
         <Link to={"/cart"}>Cart</Link>
@@ -16,7 +23,7 @@ const Navbar = () => {
           height={30}
           width={30}
         />
-        <p>Items: 0</p>
+        <p>Items: {totalQuantity}</p>
       </Link>
     </div>
   );
