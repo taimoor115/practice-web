@@ -38,11 +38,13 @@ const Products = () => {
                   className="group relative border-2 border-blue-50 p-6"
                 >
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={product.image}
-                      alt={product.category}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
+                    <Link to={`products/${product.id}`}>
+                      <img
+                        src={product.image}
+                        alt={product.category}
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      />
+                    </Link>
                   </div>
                   <div className="mt-4 flex flex-col justify-center items-center">
                     <div>
